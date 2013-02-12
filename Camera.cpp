@@ -11,11 +11,13 @@
 CCamera::CCamera(void)
 {
 	m_fSpeed=2;
+	m_fRotateYaw = 0.5f;
 }
 
 CCamera::CCamera(float x_, float y_,float z_):C3dObject(x_,y_,z_)
 {
 	m_fSpeed=2;
+	m_fRotateYaw = 0.5f;
 }
 
 CCamera::~CCamera(void)
@@ -46,16 +48,29 @@ CCamera::Update(float dt_)
 		// Move backwards
 		m_fZ += m_fSpeed*dt_;
 	}
+
+	
 	else if (CInput::Instance()->GetIfKeyDown(DIK_A))
 	{
 		// strafe left
-		m_fX-= m_fSpeed * dt_;
+		//m_fX-= m_fSpeed * dt_;
+
+		//Rotate left
+		// Yaw = rotation on Y-Axis!
+		C3dObject::IncrementYaw(-m_fRotateYaw);
 	}
+
+	
 	else if (CInput::Instance()->GetIfKeyDown(DIK_D))
 	{	
 		// Strafe right
-		m_fX+= m_fSpeed* dt_;
+		//m_fX+= m_fSpeed* dt_;
+		
+		//Rotate right
+		// Yaw = rotation on Y-Axis!
+		C3dObject::IncrementYaw(m_fRotateYaw);
 	}
+	
 
 
 	//calculate new lookat based on current Yaw,pitch roll
