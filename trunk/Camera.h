@@ -15,4 +15,5 @@ public:
 private:
 
 	float m_fSpeed; //forward motion
+	float m_fRotateYaw;
 };

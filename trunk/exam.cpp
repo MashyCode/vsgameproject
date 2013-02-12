@@ -273,6 +273,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if( (mousePos.x == mid_x) && (mousePos.y == mid_y) ) return 0;
 
 			// Set mouse cursor to center of window 
+
+			// remember to uncomment when done with camera rotation
+			/*
 			SetCursorPos(mid_x, mid_y);	
 				{
 				float x_rel=(float)mousePos.x/g_winwidth;
@@ -282,6 +285,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				//we could call gGame.HandleMouseMove(x_rel,y_rel);
 				
 				}
+			*/
+
 			}
 			return 0;
 			break;

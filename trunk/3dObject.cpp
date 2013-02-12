@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-
+#include "Input.h"
 
 
 #include "3dObject.h"
@@ -172,15 +172,16 @@ m_fZ=z_;
 void
 C3dObject::IncrementYaw(float dyaw_)
 {
-m_fYaw+=dyaw_;
-if (m_fYaw > 360)
-	{
-	m_fYaw=0.0;
-	}
-if (m_fYaw <0)
-	{
-	m_fYaw=360.0;
-	}
+	m_fYaw+=dyaw_;
+		if (m_fYaw > 360)
+			{
+				m_fYaw=0.0;
+			}
+		if (m_fYaw <0)
+			{
+				m_fYaw=360.0;
+			}
+
 }
 
 void
