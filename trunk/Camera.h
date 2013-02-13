@@ -1,6 +1,7 @@
 #pragma once
 
 #include "3dObject.h"
+#include "Game.h"
 
 class CCamera : public C3dObject
 {

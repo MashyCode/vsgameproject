@@ -164,9 +164,9 @@ C3dObject::Update(float dt_)
 void
 C3dObject::SetPosition(float x_,float y_,float z_)
 {
-m_fX=x_;
-m_fY=y_;
-m_fZ=z_;
+	m_fX=x_;
+	m_fY=y_;
+	m_fZ=z_;
 }
 
 void
@@ -188,12 +188,12 @@ void
 C3dObject::IncrementPitch(float dpitch_)
 {
 m_fPitch+=dpitch_;
-if (m_fPitch > 360)
-	{
-	m_fPitch=0.0;
-	}
-if (m_fPitch <0)
-	{
-	m_fPitch=360.0;
-	}
+	if (m_fPitch > 180)
+		{
+			m_fPitch=180;
+		}
+	if (m_fPitch <0)
+		{
+			m_fPitch=0;
+		}
 }

@@ -94,7 +94,13 @@ void
 CGame::HandleMouseMove(float xrel_,float yrel_)
 {
 //yaw camera according to distance from centre
-	//m_pCamera->IncrementYaw(25*(xrel_-0.5));
+	//m_pCamera->IncrementYaw(25*(xrel_- 0.5));
+	
+	// look up and down
+	m_pCamera->IncrementPitch(8*(0.5 - yrel_));
 
-	//m_pCamera->IncrementPitch(-25*(yrel_-0.5));
+	// look left and right
+	m_pCamera->IncrementYaw (-8*(0.5-xrel_ ));
+
+
 }
