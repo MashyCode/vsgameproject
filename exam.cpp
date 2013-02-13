@@ -228,7 +228,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		CreateTexture("assets/clouds.bmp",7);
 		CreateTexture("assets/Rachel.bmp",8);
 		CreateTexture("assets/ctower.bmp",9);
-		CreateTexture("assets/skybox3.bmp",10);
+		CreateTexture("assets/Test.bmp",10);
 		CreateTextureWithAlpha("assets/spritesheet1.bmp", 11); //the sniper
 		CreateTextureWithAlpha("assets/spritesheet2.bmp", 12); //the gargoyle
 		CreateTextureWithAlpha("assets/explosion.bmp",13);
