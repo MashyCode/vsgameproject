@@ -6,6 +6,7 @@
 class C3dObject;
 class CLight;
 class CCamera;
+class CTerrain;
 
 class CGame
 {
@@ -21,6 +22,7 @@ private:
 	C3dObject * m_p3dObjects[MAX3dObjectS];
 
 	CCamera * m_pCamera;
+	CTerrain * m_pTerrain;
 
 
 };
