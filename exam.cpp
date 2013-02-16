@@ -37,7 +37,8 @@ bool  bSetupPixelFormat(HDC hDC); //added by RM in week 1
 void RenderScene();
 void CreateTexture(LPSTR strFileName, int textureID);
 void CreateTextureWithAlpha( char * filename, unsigned int textureID ) ;
-
+bool gWireFrame;
+bool gLighting;
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
@@ -232,7 +233,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		CreateTextureWithAlpha("assets/spritesheet1.bmp", 11); //the sniper
 		CreateTextureWithAlpha("assets/spritesheet2.bmp", 12); //the gargoyle
 		CreateTextureWithAlpha("assets/explosion.bmp",13);
-		CreateTextureWithAlphaFromTGA("assets/test.tga",14);
+		CreateTextureWithAlphaFromTGA("assets/billboard.tga",14);
 		break;
 
 	case WM_SIZE:

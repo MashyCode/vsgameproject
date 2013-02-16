@@ -9,6 +9,7 @@
 #include "Billboard.h"
 #include "SkyBox.h"
 #include "Maxfile.h"
+#include "Terrain.h"
 
 //game constructor loads 3dObjects into array
 CGame::CGame(void)
@@ -30,12 +31,10 @@ CGame::CGame(void)
 		}
 	}
 
-
-	
-
-
 	//tree
 	m_p3dObjects[m_i3dObjectsLoaded++]=new CBillboard(0,2,-5,4,4,1,14);
+
+	m_p3dObjects[m_i3dObjectsLoaded++]=new CTerrain(0,0,0,64,3,6,16);
 
 	//setup the light
 	m_p3dObjects[m_i3dObjectsLoaded++]=new CLight(6,0,3);
@@ -94,13 +93,7 @@ void
 CGame::HandleMouseMove(float xrel_,float yrel_)
 {
 //yaw camera according to distance from centre
-	//m_pCamera->IncrementYaw(25*(xrel_- 0.5));
-	
-	// look up and down
-	m_pCamera->IncrementPitch(8*(0.5 - yrel_));
+	m_pCamera->IncrementYaw(25*(xrel_-0.5));
 
-	// look left and right
-	m_pCamera->IncrementYaw (-8*(0.5-xrel_ ));
-
-
+	m_pCamera->IncrementPitch(-25*(yrel_-0.5));
 }
