@@ -44,7 +44,7 @@ CCamera::Update(float dt_)
 		//m_fZ -= m_fSpeed *dt_;
 
 		//m_fZ+=-cosYaw*m_fSpeed*dt_;
-
+		
 		m_fX+=sinYaw*m_fSpeed*dt_;
 		m_fZ+=-cosYaw*m_fSpeed*dt_;
 	}

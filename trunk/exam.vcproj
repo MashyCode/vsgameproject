@@ -302,6 +302,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\Documents\University\Games Development\Year 2\Games Programming\space invaders tester\Development\Sprite.cpp"
+				>
+			</File>
+			<File
 				RelativePath="StdAfx.cpp"
 				>
 				<FileConfiguration
@@ -377,6 +381,10 @@
 			</File>
 			<File
 				RelativePath=".\SkyBox.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Documents\University\Games Development\Year 2\Games Programming\space invaders tester\Development\Sprite.h"
 				>
 			</File>
 			<File

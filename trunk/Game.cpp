@@ -18,6 +18,13 @@ CGame::CGame(void)
 	//load 3dObjects
 	//skybox first
 	m_p3dObjects[m_i3dObjectsLoaded++]=new CSkyBox(0,0,0,50,50,50,10);
+	
+	//hud graphics
+	m_pHUDCrosshair=new CSprite(0,0,2,2,15);
+	m_pHUDHealth=new CSprite(-6,-4,2,2,17);
+	m_pHUDAmmo=new CSprite(6,-4,2,2,16);
+	
+	m_HUD=false;
 
 	//setup camera
 	m_pCamera=new CCamera(0,1,6);
@@ -78,8 +85,42 @@ CGame::DoFrame()
 	{
 		m_p3dObjects[i]->Render();
 	}
+	
+	if (CInput::Instance()-> GetIfKeyDown(DIK_SPACE))
+	{
+		m_HUD=true;
+	}
+	
+	if (m_HUD==true)
+	{
+	
+		//sets the glu to orthagraphic
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(-7, 7, -5, 5);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	
+	//render the HUD graphics
+	m_pHUDCrosshair->render();
+	m_pHUDHealth->render();
+	m_pHUDAmmo->render();
+	
+	//set it back to perspective
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(45.0f,1.33,0.1f,1000.0f);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	//easy enough from here to do stuff like ammo decreasing etc but didn't want to as i don't know specfics 
+	}
 
 	
+	
+
+	
+
 }
 
 
