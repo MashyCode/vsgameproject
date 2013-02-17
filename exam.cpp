@@ -234,6 +234,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		CreateTextureWithAlpha("assets/spritesheet2.bmp", 12); //the gargoyle
 		CreateTextureWithAlpha("assets/explosion.bmp",13);
 		CreateTextureWithAlphaFromTGA("assets/billboard.tga",14);
+		CreateTextureWithAlphaFromTGA("assets/Crosshair.tga",15);
+		CreateTextureWithAlphaFromTGA("assets/gun.tga",16);
+		CreateTextureWithAlphaFromTGA("assets/health.tga",17);
 		break;
 
 	case WM_SIZE:
