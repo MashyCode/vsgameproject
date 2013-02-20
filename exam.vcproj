@@ -302,10 +302,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\Documents\University\Games Development\Year 2\Games Programming\space invaders tester\Development\Sprite.cpp"
-				>
-			</File>
-			<File
 				RelativePath="StdAfx.cpp"
 				>
 				<FileConfiguration
@@ -384,10 +380,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\Documents\University\Games Development\Year 2\Games Programming\space invaders tester\Development\Sprite.h"
-				>
-			</File>
-			<File
 				RelativePath="StdAfx.h"
 				>
 			</File>
@@ -427,10 +419,6 @@
 		</File>
 		<File
 			RelativePath=".\ClassDiagram3.cd"
-			>
-		</File>
-		<File
-			RelativePath=".\ClassDiagram4.cd"
 			>
 		</File>
 		<File

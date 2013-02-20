@@ -25,6 +25,7 @@ private:
 	int m_iMapVerticesz;
 	float m_fTerrainStepWidth;
 	float m_fTerrainStepHeight;
+	bool m_bClampToTerrain;
 	
 	AUX_RGBImageRec *m_pImage_RGB; //used to load image file for height data
 	

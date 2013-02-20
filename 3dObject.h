@@ -17,12 +17,18 @@ protected:
 	float m_fB;	//blue component between 0 and 1
 	float m_fA;	//alpha value 0-1
 
+	
+	bool m_bClampToTerrain;	// Is this object clamped to the terrain?
+	float m_fClampOffset;	// If yes, how much by?
+
+
 	float m_fYaw;
 	float m_fPitch;
 	float m_fRoll;
 
 	bool m_bInsideOut;
 	bool m_bLighting;
+
 
 public:
 	C3dObject();
@@ -31,11 +37,16 @@ public:
 	virtual ~C3dObject();
 	virtual void Render();
 	virtual void Update(float dt_);
+	
 	void SetYaw(float yaw_){m_fYaw=yaw_;}
 	void SetPosition(float x_,float y_,float z_);
 
 	void IncrementYaw(float dyaw_);
 	void IncrementPitch(float dpitch_);
+	void ApplyClampToTerrain();
+
+	void SetClampOffset(float offset) {m_fClampOffset = offset;}
+	void SetClampToTerrain(bool onoff) {m_bClampToTerrain=onoff;}
 
 	float Getx(){return m_fX;}
 	float Gety(){return m_fY;}

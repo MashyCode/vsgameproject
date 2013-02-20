@@ -1,9 +1,12 @@
 #include "StdAfx.h"
 #include "Input.h"
-
-
+#include "Game.h"
+#include "Terrain.h"
 #include "3dObject.h"
+#include <iostream>
+using namespace std;
 
+extern CGame gGame;
 
 C3dObject::C3dObject(void)
 {
@@ -16,6 +19,9 @@ C3dObject::C3dObject(void)
 	m_fYaw=0;
 	m_fPitch=0;
 	m_fRoll=0;
+	m_bClampToTerrain = true;
+	m_fClampOffset = 0;
+
 
 }
 
@@ -34,7 +40,8 @@ C3dObject::C3dObject(float x_, float y_, float z_,float w_, float h_, float d_, 
 	m_fYaw=0;
 	m_fPitch=0;
 	m_fRoll=0;
-	
+	m_bClampToTerrain = true;
+	m_fClampOffset = 0;
 }
 
 C3dObject::~C3dObject(void)
@@ -157,6 +164,7 @@ C3dObject::Render()
 void
 C3dObject::Update(float dt_)
 {
+	ApplyClampToTerrain();
 }
 
 
@@ -164,9 +172,9 @@ C3dObject::Update(float dt_)
 void
 C3dObject::SetPosition(float x_,float y_,float z_)
 {
-	m_fX=x_;
-	m_fY=y_;
-	m_fZ=z_;
+m_fX=x_;
+m_fY=y_;
+m_fZ=z_;
 }
 
 void
@@ -188,12 +196,26 @@ void
 C3dObject::IncrementPitch(float dpitch_)
 {
 m_fPitch+=dpitch_;
-	if (m_fPitch > 180)
-		{
-			m_fPitch=180;
-		}
-	if (m_fPitch <0)
-		{
-			m_fPitch=0;
-		}
+if (m_fPitch > 360)
+	{
+	m_fPitch=0.0;
+	}
+if (m_fPitch <0)
+	{
+	m_fPitch=360.0;
+	}
+}
+
+void 
+C3dObject::ApplyClampToTerrain()
+{
+	if(m_bClampToTerrain)
+	{
+		// Query Terrain to find how hight it is at current objects location
+		float newy=gGame.GetTerrain()->GetHeightAtPoint(m_fX, m_fZ);
+		m_fY=newy+m_fClampOffset;
+		//char message[]="LOLOLOLOL";
+		//OutputDebugString(message);
+	}
+
 }

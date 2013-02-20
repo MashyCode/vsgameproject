@@ -1,7 +1,6 @@
 #pragma once
 
 #include "3dObject.h"
-#include "Game.h"
 
 class CCamera : public C3dObject
 {
@@ -10,6 +9,9 @@ public:
 	CCamera(float x_,float y_,float z_);
 	~CCamera(void);
 	void Update(float dt);
+
+	bool m_bClampToTerrain;
+	float m_fClampOffset;
 
 	void SetSpeed(float speed_){m_fSpeed=speed_;}
 
