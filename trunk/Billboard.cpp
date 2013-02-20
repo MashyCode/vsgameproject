@@ -23,12 +23,16 @@ CBillboard::CBillboard(float x_,float y_,float z_,float w_,float h_,float d_, in
 
 bUseSpriteSheet=bUseSpriteSheet_;
 m_nFPS=fps_;
-
 m_nCols=cols_; //default setting
 m_nRows=rows_;
 m_nFrames=m_nRows*m_nCols;
 m_dTimeToAdvanceAnimation=CTimer::Instance()->GetTime();
 bAdditiveBlending=additive_;
+
+C3dObject::m_bClampToTerrain = true;
+C3dObject::m_fClampOffset = 0.7 * m_fH;
+
+
 
 if (bUseSpriteSheet)
 	{
@@ -47,13 +51,12 @@ if (bUseSpriteSheet)
 
 CBillboard::~CBillboard()
 {
-
+	
 }
 
 void
 CBillboard::Render()
 {
-
 	glPushMatrix();
 	glFrontFace(GL_CCW);
 	glTranslatef(m_fX,m_fY,m_fZ);
@@ -126,6 +129,7 @@ CBillboard::Update(float dt_)
 		}
 
 	}
+	ApplyClampToTerrain();
 }
 
 

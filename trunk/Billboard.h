@@ -26,6 +26,8 @@ private:
 	float m_fURight; //u coordinates for  left,  right
 	float m_fVTop;
 	float m_fVBottom; //v coordinates for top and bottom
+	bool m_bClampToTerrain;
+	float m_fClampOffset;
 	int m_nCurrentFrame;
 	int m_nFPS;
 	double m_dTimeToAdvanceAnimation;

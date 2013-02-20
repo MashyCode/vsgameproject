@@ -34,7 +34,7 @@ m_fTerrainStepHeight=1.0f/m_iMapVerticesz;
 //ComputeVertexHeights();
 ComputeNormals();
 //DumpVertexData();
-//m_bClampToTerrain=false;
+m_bClampToTerrain=false;
 }
 
 CTerrain::~CTerrain(void)
@@ -215,7 +215,7 @@ else
 	glPolygonMode ( GL_FRONT_AND_BACK, GL_FILL); //wireframe mode
 }
 
-
+//
 glDisable(GL_CULL_FACE); //don't cull faces
 
 

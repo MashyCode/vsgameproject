@@ -15,6 +15,8 @@ public:
 	~CGame(void);
 	void DoFrame();
 	CCamera * GetCamera();
+	CTerrain * GetTerrain();
+		
 	void HandleMouseMove(float xrel_,float yrel_);
 
 private:
@@ -23,6 +25,4 @@ private:
 
 	CCamera * m_pCamera;
 	CTerrain * m_pTerrain;
-
-
 };

@@ -19,29 +19,30 @@ CGame::CGame(void)
 	//skybox first
 	m_p3dObjects[m_i3dObjectsLoaded++]=new CSkyBox(0,0,0,50,50,50,10);
 	
-	//hud graphics
-	m_pHUDCrosshair=new CSprite(0,0,2,2,15);
-	m_pHUDHealth=new CSprite(-6,-4,2,2,17);
-	m_pHUDAmmo=new CSprite(6,-4,2,2,16);
-	
-	m_HUD=false;
+
 
 	//setup camera
 	m_pCamera=new CCamera(0,1,6);
 	m_p3dObjects[m_i3dObjectsLoaded++]=m_pCamera;
 
-	for (int j=0;j<10;j++)
+
+
+	//for (int j=0;j<10;j++)
+	//{
+	//	for(int i=0;i<10;i++)
+	//	{
+	//	m_p3dObjects[m_i3dObjectsLoaded++]=new C3dObject(i-5,0,j-5,1,0.1,1,2);
+	//	}
+	//}
+
+	//Tree for loop, needs to be changed to random X position and random Z position
+	for (int trees = 0; trees < 20; trees++)
 	{
-		for(int i=0;i<10;i++)
-		{
-		m_p3dObjects[m_i3dObjectsLoaded++]=new C3dObject(i-5,0,j-5,1,0.1,1,2);
-		}
+		m_p3dObjects[m_i3dObjectsLoaded++]=new CBillboard(0 + trees, trees * 0.5,rand() % 20 - trees,4,4,rand() % 20 - trees,14);
 	}
 
-	//tree
-	m_p3dObjects[m_i3dObjectsLoaded++]=new CBillboard(0,2,-5,4,4,1,14);
-
-	m_p3dObjects[m_i3dObjectsLoaded++]=new CTerrain(0,0,0,64,3,6,16);
+	m_pTerrain=new CTerrain(0, 0, 0, 50, 3, 50, 17);
+	m_p3dObjects[m_i3dObjectsLoaded++]=m_pTerrain;
 
 	//setup the light
 	m_p3dObjects[m_i3dObjectsLoaded++]=new CLight(6,0,3);
@@ -86,41 +87,14 @@ CGame::DoFrame()
 		m_p3dObjects[i]->Render();
 	}
 	
-	if (CInput::Instance()-> GetIfKeyDown(DIK_SPACE))
-	{
-		m_HUD=true;
-	}
-	
-	if (m_HUD==true)
-	{
-	
-		//sets the glu to orthagraphic
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluOrtho2D(-7, 7, -5, 5);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	
-	//render the HUD graphics
-	m_pHUDCrosshair->render();
-	m_pHUDHealth->render();
-	m_pHUDAmmo->render();
-	
-	//set it back to perspective
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(45.0f,1.33,0.1f,1000.0f);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 
-	//easy enough from here to do stuff like ammo decreasing etc but didn't want to as i don't know specfics 
+	// Escape key, when pressed, exit with code 0
+	if(CInput::Instance()->GetIfKeyDown(DIK_ESCAPE))
+	{
+		exit(0);
 	}
 
 	
-	
-
-	
-
 }
 
 
@@ -130,11 +104,17 @@ CGame::GetCamera()
 	return m_pCamera;
 }
 
+CTerrain * 
+CGame::GetTerrain()
+{
+	return m_pTerrain;
+}
+
 void
 CGame::HandleMouseMove(float xrel_,float yrel_)
 {
 //yaw camera according to distance from centre
-	m_pCamera->IncrementYaw(25*(xrel_-0.5));
+	//m_pCamera->IncrementYaw(25*(xrel_-0.5));
 
-	m_pCamera->IncrementPitch(-25*(yrel_-0.5));
+	//m_pCamera->IncrementPitch(-25*(yrel_-0.5));
 }

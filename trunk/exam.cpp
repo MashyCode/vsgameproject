@@ -37,8 +37,9 @@ bool  bSetupPixelFormat(HDC hDC); //added by RM in week 1
 void RenderScene();
 void CreateTexture(LPSTR strFileName, int textureID);
 void CreateTextureWithAlpha( char * filename, unsigned int textureID ) ;
-bool gWireFrame;
-bool gLighting;
+bool gLighting;	// Bool to turn lighting on and off
+bool gWireFrame; // Bool to turn Wireframe on and off
+
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
@@ -233,10 +234,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		CreateTextureWithAlpha("assets/spritesheet1.bmp", 11); //the sniper
 		CreateTextureWithAlpha("assets/spritesheet2.bmp", 12); //the gargoyle
 		CreateTextureWithAlpha("assets/explosion.bmp",13);
-		CreateTextureWithAlphaFromTGA("assets/billboard.tga",14);
-		CreateTextureWithAlphaFromTGA("assets/Crosshair.tga",15);
-		CreateTextureWithAlphaFromTGA("assets/gun.tga",16);
-		CreateTextureWithAlphaFromTGA("assets/health.tga",17);
+		CreateTextureWithAlphaFromTGA("assets/test.tga",14);
+		CreateTextureWithAlpha("assets/TestRain.bmp",15);
+		CreateTexture("assets/heightfield256.bmp", 16);
+		CreateTexture("assets/ground256.bmp", 17);
 		break;
 
 	case WM_SIZE:
@@ -277,17 +278,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if( (mousePos.x == mid_x) && (mousePos.y == mid_y) ) return 0;
 
 			// Set mouse cursor to center of window 
-			
+
+			// remember to uncomment when done with camera rotation
+			/*
 			SetCursorPos(mid_x, mid_y);	
 				{
-					float x_rel=(float)mousePos.x/g_winwidth;
-					float y_rel=(float)mousePos.y/g_winheight;
-					//if mouse moved we can tell the game to do something
-					//eg if the game has a HandleMouseMove(x,y) method
-					//we could call gGame.HandleMouseMove(x_rel,y_rel);
-					gGame.HandleMouseMove(x_rel, y_rel);
+				float x_rel=(float)mousePos.x/g_winwidth;
+				float y_rel=(float)mousePos.y/g_winheight;
+				//if mouse moved we can tell the game to do something
+				//eg if the game has a HandleMouseMove(x,y) method
+				//we could call gGame.HandleMouseMove(x_rel,y_rel);
+				
 				}
-			
+			*/
 
 			}
 			return 0;
