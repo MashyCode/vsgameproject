@@ -1,5 +1,6 @@
 #pragma once
 #include "3dObject.h"
+#include "Sprite.h"
 
 #define MAX3dObjectS 150
 
@@ -16,7 +17,6 @@ public:
 	void DoFrame();
 	CCamera * GetCamera();
 	CTerrain * GetTerrain();
-		
 	void HandleMouseMove(float xrel_,float yrel_);
 
 private:
@@ -25,4 +25,8 @@ private:
 
 	CCamera * m_pCamera;
 	CTerrain * m_pTerrain;
+
+	CSprite * m_pHUDCrosshair;
+	CSprite * m_pHUDHealth;
+	CSprite * m_pHUDAmmo;
 };

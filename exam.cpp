@@ -234,10 +234,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		CreateTextureWithAlpha("assets/spritesheet1.bmp", 11); //the sniper
 		CreateTextureWithAlpha("assets/spritesheet2.bmp", 12); //the gargoyle
 		CreateTextureWithAlpha("assets/explosion.bmp",13);
-		CreateTextureWithAlphaFromTGA("assets/test.tga",14);
+		CreateTextureWithAlphaFromTGA("assets/billboard.tga",14);
 		CreateTextureWithAlpha("assets/TestRain.bmp",15);
 		CreateTexture("assets/heightfield256.bmp", 16);
 		CreateTexture("assets/ground256.bmp", 17);
+		CreateTextureWithAlphaFromTGA("assets/Crosshair.tga",18);
+		CreateTextureWithAlphaFromTGA("assets/gun.tga",19);
+		CreateTextureWithAlphaFromTGA("assets/health.tga",20);
 		break;
 
 	case WM_SIZE:
@@ -280,7 +283,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			// Set mouse cursor to center of window 
 
 			// remember to uncomment when done with camera rotation
-			/*
+			
 			SetCursorPos(mid_x, mid_y);	
 				{
 				float x_rel=(float)mousePos.x/g_winwidth;
@@ -288,11 +291,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				//if mouse moved we can tell the game to do something
 				//eg if the game has a HandleMouseMove(x,y) method
 				//we could call gGame.HandleMouseMove(x_rel,y_rel);
-				
+				gGame.HandleMouseMove(x_rel, y_rel);
 				}
-			*/
 
 			}
+
+			ShowCursor(0);
 			return 0;
 			break;
 
