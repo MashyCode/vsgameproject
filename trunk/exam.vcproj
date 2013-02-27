@@ -267,27 +267,8 @@
 				>
 			</File>
 			<File
-				RelativePath="Game.cpp"
+				RelativePath=".\Game.cpp"
 				>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Input.cpp"
@@ -299,6 +280,10 @@
 			</File>
 			<File
 				RelativePath=".\SkyBox.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Sprite.cpp"
 				>
 			</File>
 			<File
@@ -360,7 +345,7 @@
 				>
 			</File>
 			<File
-				RelativePath="Game.h"
+				RelativePath=".\Game.h"
 				>
 			</File>
 			<File
@@ -377,6 +362,10 @@
 			</File>
 			<File
 				RelativePath=".\SkyBox.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Sprite.h"
 				>
 			</File>
 			<File

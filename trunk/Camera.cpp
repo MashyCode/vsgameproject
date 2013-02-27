@@ -12,8 +12,6 @@ CCamera::CCamera(void)
 {
 	m_fSpeed=2;
 	m_fRotateYaw = 0.5f;
-
-
 }
 
 CCamera::CCamera(float x_, float y_,float z_):C3dObject(x_,y_,z_)
@@ -22,7 +20,7 @@ CCamera::CCamera(float x_, float y_,float z_):C3dObject(x_,y_,z_)
 	m_fRotateYaw = 0.5f;
 
 	C3dObject::m_bClampToTerrain = true;
-	C3dObject::m_fClampOffset = 2 * m_fH;
+	C3dObject::m_fClampOffset = 2.0 * m_fH;
 }
 
 CCamera::~CCamera(void)
@@ -46,12 +44,20 @@ CCamera::Update(float dt_)
 	if (CInput::Instance()-> GetIfKeyDown(DIK_W))
 	{	
 		// Move fowards
-		m_fZ -= m_fSpeed *dt_;
+		//m_fZ -= m_fSpeed *dt_;
+
+		//m_fZ+=-cosYaw*m_fSpeed*dt_;
+
+		m_fX+=sinYaw*m_fSpeed*dt_;
+		m_fZ+=-cosYaw*m_fSpeed*dt_;
 	}
 	else if (CInput::Instance()-> GetIfKeyDown(DIK_S))
 	{	
 		// Move backwards
-		m_fZ += m_fSpeed*dt_;
+		//m_fZ += m_fSpeed*dt_;
+
+		m_fX+=-sinYaw*m_fSpeed*dt_;
+		m_fZ+=cosYaw*m_fSpeed*dt_;
 	}
 
 	
@@ -60,9 +66,12 @@ CCamera::Update(float dt_)
 		// strafe left
 		//m_fX-= m_fSpeed * dt_;
 
-		//Rotate left
+		//Rotate left - TEST FOR 3RD-PERSON
 		// Yaw = rotation on Y-Axis!
-		C3dObject::IncrementYaw(-m_fRotateYaw);
+		//C3dObject::IncrementYaw(-m_fRotateYaw);
+
+		m_fX -= cosYaw*dt_;
+		m_fZ -= sinYaw*dt_;
 	}
 
 	
@@ -71,9 +80,12 @@ CCamera::Update(float dt_)
 		// Strafe right
 		//m_fX+= m_fSpeed* dt_;
 		
-		//Rotate right
+		//Rotate right - TEST FOR 3RD-PERSON
 		// Yaw = rotation on Y-Axis!
-		C3dObject::IncrementYaw(m_fRotateYaw);
+		//C3dObject::IncrementYaw(m_fRotateYaw);
+		
+		m_fX += cosYaw*dt_;
+		m_fZ += sinYaw*dt_;
 	}
 	
 
